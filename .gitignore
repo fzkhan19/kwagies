@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# open-next
+.open-next
+build-output.txt
+next-build-output.txt
+deploy-output.txt
+deploy-final.txt
+tail-output.txt
+diagnostic-output.txt
+debug-keystatic-file.ts
+*.log
