@@ -5,8 +5,6 @@ import {Menu} from "@/components/menu";
 import {Navbar} from "@/components/navbar";
 import {ReservationForm} from "@/components/reservation-form";
 
-export const dynamic = "force-static";
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
