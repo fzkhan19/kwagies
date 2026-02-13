@@ -1,9 +1,11 @@
-import { Footer } from "@/components/footer";
-import { Heritage } from "@/components/heritage";
-import { Hero } from "@/components/hero";
-import { Menu } from "@/components/menu";
-import { Navbar } from "@/components/navbar";
-import { ReservationForm } from "@/components/reservation-form";
+import {Footer} from "@/components/footer";
+import {Heritage} from "@/components/heritage";
+import {Hero} from "@/components/hero";
+import {Menu} from "@/components/menu";
+import {Navbar} from "@/components/navbar";
+import {ReservationForm} from "@/components/reservation-form";
+
+export const dynamic = "force-static";
 
 export default function Home() {
   return (

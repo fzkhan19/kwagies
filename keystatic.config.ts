@@ -37,10 +37,8 @@ export default config({
       schema: {
         name: fields.text({ label: 'Name' }),
         role: fields.text({ label: 'Role' }),
-        image: fields.image({
-          label: 'Photo',
-          directory: 'public/images/team',
-          publicPath: '/images/team/',
+        image: fields.text({
+          label: 'Photo URL',
         }),
         bio: fields.document({
             label: 'Bio',

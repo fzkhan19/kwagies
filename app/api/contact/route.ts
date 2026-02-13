@@ -1,6 +1,5 @@
 
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -17,55 +16,18 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, email, phone, guests, date, requests } = formSchema.parse(body);
 
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.ethereal.email",
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_PORT === "465", // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER || "ethereal_user",
-        pass: process.env.SMTP_PASS || "ethereal_pass",
-      },
-    });
+    // Log the reservation (replace with a Cloudflare-compatible email service like Resend later)
+    console.log("New reservation:", { name, email, phone, guests, date, requests });
 
-    const mailOptions = {
-      from: process.env.SMTP_FROM || '"Kwagies Website" <noreply@kwagies.com>',
-      to: process.env.SMTP_TO || "reservations@kwagies.com",
-      subject: `New Reservation from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone}
-        Guests: ${guests}
-        Date: ${new Date(date).toLocaleDateString()}
-        Requests: ${requests || "None"}
-      `,
-      html: `
-        <h1>New Reservation Request</h1>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Guests:</strong> ${guests}</p>
-        <p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>
-        <p><strong>Special Requests:</strong> ${requests || "None"}</p>
-      `,
-    };
+    // TODO: Integrate with Resend, Mailgun, or Cloudflare Email Workers
+    // For now, simulate success
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    if (!process.env.SMTP_USER) {
-      console.log("Simulating email send (no credentials provided):", mailOptions);
-      // Simulate delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      return NextResponse.json({ success: true, message: "Reservation simulated!" });
-    }
-
-    await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully!");
-
-    return NextResponse.json({ success: true, message: "Reservation email sent!" });
+    return NextResponse.json({ success: true, message: "Reservation received!" });
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error processing reservation:", error);
     return NextResponse.json(
-      { success: false, message: "Failed to send reservation." },
+      { success: false, message: "Failed to process reservation." },
       { status: 500 }
     );
   }

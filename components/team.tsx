@@ -37,7 +37,7 @@ export async function Team() {
                 {member.entry.image && (
                   <Image
                     src={member.entry.image}
-                    alt={member.entry.name}
+                    alt={member.entry.name || ""}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -45,9 +45,9 @@ export async function Team() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                   <h3 className="font-heading text-2xl font-bold mb-1">
-                    {member.entry.name}
+                    {member.entry.name || "Team Member"}
                   </h3>
-                  <p className="text-primary font-medium">{member.entry.role}</p>
+                  <p className="text-primary font-medium">{member.entry.role || ""}</p>
                 </div>
               </div>
               <div className="p-6 prose prose-stone dark:prose-invert">
