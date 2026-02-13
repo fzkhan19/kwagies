@@ -24,10 +24,8 @@ export default config({
           ],
           defaultValue: 'mains',
         }),
-        image: fields.image({
-          label: 'Image',
-          directory: 'public/images/menu',
-          publicPath: '/images/menu/',
+        image: fields.text({
+          label: 'Image URL',
         }),
       },
     }),
