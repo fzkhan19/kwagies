@@ -9,7 +9,7 @@ export default config({
     menu: collection({
       label: 'Menu',
       slugField: 'title',
-      path: 'content/menu/*',
+      path: 'content/menu/*/',
       format: { data: 'json' },
       schema: {
         title: fields.slug({ name: { label: 'Name' } }),
@@ -34,7 +34,7 @@ export default config({
     team: collection({
       label: 'Team',
       slugField: 'name',
-      path: 'content/team/*',
+      path: 'content/team/*/',
       format: { contentField: 'bio' },
       schema: {
         name: fields.text({ label: 'Name' }),
